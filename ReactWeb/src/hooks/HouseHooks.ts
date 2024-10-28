@@ -8,7 +8,9 @@ import config from "../config";
 import { House } from "./../types/house";
 
 //This is a custom hook. Basically a custom hook is a function
-//that can use other hooks such as useSt
+//that can use other hooks such as useState.
+//Note: (): House[] - this means we are declaring the return type
+//to be of type House[] array.
 const useFetchHouses = (): House[] => {
 
     const [houses, setHouses] = useState<House[]>([]);
