@@ -1,20 +1,20 @@
-import config from "../config";
-import { House } from "../types/house";
-import { useState } from "react";
+import useFetchHouses from "../hooks/HouseHooks";
 
 const HouseList = () => {
   
-  const [houses, setHouses] = useState<House[]>
-        ([]); //dependency array
+  //substitute the custom hook 
+  const houses =useFetchHouses();
 
-  const fetchHouses = async () => {
-       const rsp = await fetch(`${config.baseApiUrl}/houses`);
-       const houses = await rsp.json();  //deserialize to JSON
-       setHouses(houses); //set the state after which the component will be re-rendered
-  };
+  //Move the following code to HouseHook
+  // const [houses, setHouses] = useState<House[]>
+  //       ([]); //dependency array
 
-   //We can call the async function
-   fetchHouses();
+  // const fetchHouses = async () => {
+  //      const rsp = await fetch(`${config.baseApiUrl}/houses`);
+  //      const houses = await rsp.json();  //deserialize to JSON
+  //      setHouses(houses); //set the state after which the component will be re-rendered
+  // };
+  //  fetchHouses();
    
   return (
     <div>

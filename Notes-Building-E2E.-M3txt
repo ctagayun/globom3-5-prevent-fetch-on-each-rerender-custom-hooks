@@ -153,3 +153,18 @@ Module 3: Getting and Displaying Data
 
   5. React Custom Hooks and Rerender 
       - prevent re-render on fetch
+      - create a folder hooks and a file called HouseHooks and define a custom hook:
+            const useFetchHouses = (): House[] => {
+            const [houses, setHouses] = useState<House[]>
+              ([]);
+
+            const fetchHouses = async () => {
+                const rsp = await fetch(`${config.baseApiUrl}/houses`);
+                const houses = await rsp.json();  //deserialize to JSON
+                setHouses(houses); //set the state after which the component will be re-rendered
+          };
+          fetchHouses();
+          return houses;
+          }
+        
+       - then go to HouseList and refactor to call useFetchHouses custom hook
